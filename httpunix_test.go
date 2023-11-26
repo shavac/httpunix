@@ -8,7 +8,6 @@ import (
 	"net/http/httputil"
 	"time"
 
-	"github.com/tv42/httpunix"
 )
 
 func Example_clientStandalone() {
