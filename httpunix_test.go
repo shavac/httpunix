@@ -1,4 +1,4 @@
-package httpunix_test
+package httpunix
 
 import (
 	"fmt"
@@ -12,7 +12,7 @@ import (
 
 func Example_clientStandalone() {
 	// This example shows using a customized http.Client.
-	u := &httpunix.Transport{
+	u := &Transport{
 		DialTimeout:           100 * time.Millisecond,
 		RequestTimeout:        1 * time.Second,
 		ResponseHeaderTimeout: 1 * time.Second,
@@ -38,7 +38,7 @@ func Example_clientStandalone() {
 func Example_clientIntegrated() {
 	// This example shows handling all net/http requests for the
 	// http+unix URL scheme.
-	u := &httpunix.Transport{
+	u := &Transport{
 		DialTimeout:           100 * time.Millisecond,
 		RequestTimeout:        1 * time.Second,
 		ResponseHeaderTimeout: 1 * time.Second,
@@ -47,7 +47,7 @@ func Example_clientIntegrated() {
 
 	// If you want to use http: with the same client:
 	t := &http.Transport{}
-	t.RegisterProtocol(httpunix.Scheme, u)
+	t.RegisterProtocol(Scheme, u)
 	var client = http.Client{
 		Transport: t,
 	}
